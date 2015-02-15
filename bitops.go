@@ -169,3 +169,46 @@ func CountZero32(value uint32) (uint) {
 func CountZero64(value uint64) (uint) {
     return 64 - CountOne64(value)
 }
+
+// CountTrailZero32 return number of trailing zero in a 32-bit value
+func CountTrailZero32(value uint32) (uint) {
+    var count uint = 0
+
+    if (value & 0x0000FFFF) == 0 {
+        count += 16;
+        value >>= 16;
+    }
+    if (value & 0x000000FF) == 0 {
+        count += 8;
+        value >>= 8;
+    }
+    if (value & 0x0000000F) == 0 {
+        count += 4;
+        value >>= 4;
+    }
+    if (value & 0x00000003) == 0 {
+        count += 2;
+        value >>= 2;
+    }
+    if (value & 0x00000001) == 0 {
+        count++;
+        value >>= 1;
+    }
+    if (value & 0x00000001) == 0 {
+        count++;
+    }
+
+    return count
+}
+
+// CountTrailZero64 return number of trailing zero in a 32-bit value
+func CountTrailZero64(value uint64) (uint) {
+    var count uint = 0
+
+    if  uint32(value) == 0 {
+        count += 32;
+        value >>= 32;
+    }
+
+    return count + CountTrailZero32(uint32(value))
+}
