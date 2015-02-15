@@ -107,3 +107,65 @@ func SetField64(value uint64, high uint, low uint, field uint64) (uint64, error)
 
     return deposit64(value, low, high - low + 1, field)
 }
+
+// CountOne8 return number of 1 in uint8 variable
+func CountOne8(value uint8) (uint) {
+    value = (value & 0x55) + ((value >> 1) & 0x55);
+    value = (value & 0x33) + ((value >> 2) & 0x33);
+    value = (value & 0x0f) + ((value >> 4) & 0x0f);
+
+    return uint(value);
+}
+
+// CountOne16 return number of 1 in uint16 variable
+func CountOne16(value uint16) (uint) {
+    value = (value & 0x5555) + ((value >> 1) & 0x5555);
+    value = (value & 0x3333) + ((value >> 2) & 0x3333);
+    value = (value & 0x0f0f) + ((value >> 4) & 0x0f0f);
+    value = (value & 0x00ff) + ((value >> 8) & 0x00ff);
+
+    return uint(value);
+}
+
+// CountOne32 return number of 1 in uint32 variable
+func CountOne32(value uint32) (uint) {
+    value = (value & 0x55555555) + ((value >>  1) & 0x55555555);
+    value = (value & 0x33333333) + ((value >>  2) & 0x33333333);
+    value = (value & 0x0f0f0f0f) + ((value >>  4) & 0x0f0f0f0f);
+    value = (value & 0x00ff00ff) + ((value >>  8) & 0x00ff00ff);
+    value = (value & 0x0000ffff) + ((value >> 16) & 0x0000ffff);
+
+    return uint(value);
+}
+
+// CountOne64 return number of 1 in uint64 variable
+func CountOne64(value uint64) (uint) {
+    value = (value & 0x5555555555555555) + ((value >>  1) & 0x5555555555555555);
+    value = (value & 0x3333333333333333) + ((value >>  2) & 0x3333333333333333);
+    value = (value & 0x0f0f0f0f0f0f0f0f) + ((value >>  4) & 0x0f0f0f0f0f0f0f0f);
+    value = (value & 0x00ff00ff00ff00ff) + ((value >>  8) & 0x00ff00ff00ff00ff);
+    value = (value & 0x0000ffff0000ffff) + ((value >> 16) & 0x0000ffff0000ffff);
+    value = (value & 0x00000000ffffffff) + ((value >> 32) & 0x00000000ffffffff);
+
+    return uint(value);
+}
+
+// CountOne8 return number of 0 in uint8 variable
+func CountZero8(value uint8) (uint) {
+    return 8 - CountOne8(value)
+}
+
+// CountOne16 return number of 0 in uint16 variable
+func CountZero16(value uint16) (uint) {
+    return 16 - CountOne16(value)
+}
+
+// CountOne32 return number of 0 in uint32 variable
+func CountZero32(value uint32) (uint) {
+    return 32 - CountOne32(value)
+}
+
+// CountOne64 return number of 0 in uint64 variable
+func CountZero64(value uint64) (uint) {
+    return 64 - CountOne64(value)
+}

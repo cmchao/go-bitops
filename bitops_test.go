@@ -509,3 +509,75 @@ func TestSetField64(t *testing.T) {
         t.Log("get valid field")
     }
 }
+
+func TestCountOne8(t *testing.T) {
+    var value uint8 = 0xA5
+    count := CountOne8(value);
+    if count != 4 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 4, count, value)
+    }
+}
+
+func TestCountOne16(t *testing.T) {
+    var value uint16 = 0xA5A6
+    count := CountOne16(value)
+    if count != 8 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 8, count, value)
+    }
+}
+
+func TestCountOne32(t *testing.T) {
+    var value uint32 = 0xA5A5A5A5
+    count := CountOne32(value)
+    if count != 16 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 16, count, value)
+    }
+}
+
+func TestCountOne64(t *testing.T) {
+    var value uint64 = 0xA5A5A5A5A5A5A5A5
+    count := CountOne64(value)
+    if count != 32 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 32, count, value)
+    }
+}
+
+func TestCountZero8(t *testing.T) {
+    var value uint8 = 0xA5
+    count := CountZero8(value);
+    if count != 4 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 4, count, value)
+    }
+}
+
+func TestCountZero16(t *testing.T) {
+    var value uint16 = 0xA5A6
+    count := CountZero16(value)
+    if count != 8 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 8, count, value)
+    }
+}
+
+func TestCountZero32(t *testing.T) {
+    var value uint32 = 0xA5A5A5A5
+    count := CountZero32(value)
+    if count != 16 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 16, count, value)
+    }
+}
+
+func TestCountZero64(t *testing.T) {
+    var value uint64 = 0xA5A5A5A5A5A5A5A5
+    count := CountZero64(value)
+    if count != 32 {
+        t.Fail()
+        t.Logf("expect %d for %x but get", 32, count, value)
+    }
+}
