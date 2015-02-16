@@ -612,3 +612,36 @@ func TestCountTrailZero64(t *testing.T) {
         value <<= 8;
     }
 }
+
+func TestCountTrailOne32(t *testing.T) {
+    var value uint32
+    var count, expect_cnt, i uint
+
+    value = 0x0FFFFFFF
+    for i = 4; i > 0; i-- {
+        count = CountTrailOne32(value)
+        if expect_cnt = i * 8 - 4; count != expect_cnt {
+            t.Fail()
+            t.Logf("expect %d for %d but get %x", expect_cnt, count, value)
+        }
+
+        value >>= 8
+    }
+}
+
+func TestCountTrailOne64(t *testing.T) {
+    var value uint64
+    var count, expect_cnt, i uint
+
+    value = 0x0FFFFFFFFFFFFFFF
+    for i = 8; i > 0; i-- {
+        count = CountTrailOne64(value)
+        t.Logf("expect %d for %x but get", expect_cnt, count, value)
+        if expect_cnt = i * 8 - 4; count != expect_cnt {
+            t.Fail()
+            t.Logf("expect %d for %d but get %x", expect_cnt, count, value)
+        }
+
+        value >>= 8
+    }
+}

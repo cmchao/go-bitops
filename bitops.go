@@ -212,3 +212,13 @@ func CountTrailZero64(value uint64) (uint) {
 
     return count + CountTrailZero32(uint32(value))
 }
+
+// CountTrailOne32 return number of trailing 1 in a 32-bit value
+func CountTrailOne32(value uint32) (uint) {
+    return CountTrailZero32(^value)
+}
+
+// CountTrailOne64 return number of trailing 1 in a 32-bit value
+func CountTrailOne64(value uint64) (uint) {
+    return CountTrailZero64(^value)
+}
