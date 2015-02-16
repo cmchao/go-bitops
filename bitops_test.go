@@ -515,7 +515,7 @@ func TestCountOne8(t *testing.T) {
     count := CountOne8(value);
     if count != 4 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 4, count, value)
+        t.Logf("expect %d for %x but get %x", 4, count, value)
     }
 }
 
@@ -524,7 +524,7 @@ func TestCountOne16(t *testing.T) {
     count := CountOne16(value)
     if count != 8 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 8, count, value)
+        t.Logf("expect %d for %x but get %x", 8, count, value)
     }
 }
 
@@ -533,7 +533,7 @@ func TestCountOne32(t *testing.T) {
     count := CountOne32(value)
     if count != 16 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 16, count, value)
+        t.Logf("expect %d for %x but get %x", 16, count, value)
     }
 }
 
@@ -542,7 +542,7 @@ func TestCountOne64(t *testing.T) {
     count := CountOne64(value)
     if count != 32 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 32, count, value)
+        t.Logf("expect %d for %x but get %x", 32, count, value)
     }
 }
 
@@ -551,7 +551,7 @@ func TestCountZero8(t *testing.T) {
     count := CountZero8(value);
     if count != 4 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 4, count, value)
+        t.Logf("expect %d for %x but get %x", 4, count, value)
     }
 }
 
@@ -560,7 +560,7 @@ func TestCountZero16(t *testing.T) {
     count := CountZero16(value)
     if count != 8 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 8, count, value)
+        t.Logf("expect %d for %x but get %x", 8, count, value)
     }
 }
 
@@ -569,7 +569,7 @@ func TestCountZero32(t *testing.T) {
     count := CountZero32(value)
     if count != 16 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 16, count, value)
+        t.Logf("expect %d for %x but get %x", 16, count, value)
     }
 }
 
@@ -578,7 +578,7 @@ func TestCountZero64(t *testing.T) {
     count := CountZero64(value)
     if count != 32 {
         t.Fail()
-        t.Logf("expect %d for %x but get", 32, count, value)
+        t.Logf("expect %d for %x but get %x", 32, count, value)
     }
 }
 
@@ -636,7 +636,7 @@ func TestCountTrailOne64(t *testing.T) {
     value = 0x0FFFFFFFFFFFFFFF
     for i = 8; i > 0; i-- {
         count = CountTrailOne64(value)
-        t.Logf("expect %d for %x but get", expect_cnt, count, value)
+        t.Logf("expect %d for %x but get %x", expect_cnt, count, value)
         if expect_cnt = i * 8 - 4; count != expect_cnt {
             t.Fail()
             t.Logf("expect %d for %d but get %x", expect_cnt, count, value)
