@@ -677,3 +677,35 @@ func TestCountLeadZero64(t *testing.T) {
         value >>= 8
     }
 }
+
+func TestCountLeadOne32(t *testing.T) {
+    var value uint32
+    var count, expect_cnt, i uint
+
+    value = 0xFFFFFFF0
+    for i = 4; i > 0; i-- {
+        count = CountLeadOne32(value)
+        if expect_cnt = i * 8 - 4; count != expect_cnt {
+            t.Fail()
+            t.Logf("expect %2d for %2d but get %.8x", expect_cnt, count, value)
+        }
+
+        value <<= 8
+    }
+}
+
+func TestCountLeadOne64(t *testing.T) {
+    var value uint64
+    var count, expect_cnt, i uint
+
+    value = 0xFFFFFFFFFFFFFFF0
+    for i = 8; i > 0; i-- {
+        count = CountLeadOne64(value)
+        if expect_cnt = i * 8 - 4; count != expect_cnt {
+            t.Fail()
+            t.Logf("expect %2d for %2d but get %.8x", expect_cnt, count, value)
+        }
+
+        value <<= 8
+    }
+}

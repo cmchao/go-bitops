@@ -266,3 +266,13 @@ func CountLeadZero64(value uint64) (uint) {
 
     return count + CountLeadZero32(uint32(value))
 }
+
+// CountLeadOne32 return number of leading 1 in a 32-bit value
+func CountLeadOne32(value uint32) (uint) {
+    return CountLeadZero32(^value)
+}
+
+// CountLeadOne64 return number of leading 1 in a 32-bit value
+func CountLeadOne64(value uint64) (uint) {
+    return CountLeadZero64(^value)
+}
