@@ -223,7 +223,7 @@ func CountTrailOne64(value uint64) (uint) {
     return CountTrailZero64(^value)
 }
 
-// CountLeadZero32 return number of leading 1 in a 32-bit value
+// CountLeadZero32 return number of leading 0 in a 32-bit value
 func CountLeadZero32(value uint32) (uint) {
     var count uint = 0
 
@@ -254,7 +254,7 @@ func CountLeadZero32(value uint32) (uint) {
     return count
 }
 
-// CountLeadZero64 return number of leading 1 in a 32-bit value
+// CountLeadZero64 return number of leading 0 in a 32-bit value
 func CountLeadZero64(value uint64) (uint) {
     var count uint = 0
 
