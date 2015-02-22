@@ -842,3 +842,57 @@ func TestToggleBit64(t *testing.T) {
         t.Logf("MSB error")
     }
 }
+
+func TestClearBit32(t *testing.T) {
+    var value, ret uint32
+    var pos uint
+    var err error
+
+    value = 0x80000001
+
+    pos = 32 
+    ret, err = ClearBit32(value, pos)
+    if err == nil {
+        t.Logf("expect error")
+    }
+
+    pos = 31
+    ret, err = ClearBit32(value, pos)
+    if err != nil || ret != 0x1{
+        t.Logf("LSB error")
+    }
+
+    pos = 0
+    ret, err = ClearBit32(value, pos)
+    if err != nil || ret != 0x80000000{
+        t.Logf("MSB error")
+    }
+
+}
+
+func TestClearBit64(t *testing.T) {
+    var value, ret uint64
+    var pos uint
+    var err error
+
+    value = 0x8000000000000001
+
+    pos = 64 
+    ret, err = ClearBit64(value, pos)
+    if err == nil {
+        t.Logf("expect error")
+    }
+
+    pos = 63
+    ret, err = ClearBit64(value, pos)
+    if err != nil || ret != 0x1{
+        t.Logf("LSB error")
+    }
+
+    pos = 0
+    ret, err = ClearBit64(value, pos)
+    if err != nil || ret != uint64(1) << 63{
+        t.Logf("MSB error")
+    }
+
+}
