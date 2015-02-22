@@ -294,4 +294,19 @@ func SetBit64(value uint64, pos uint) (uint64, error) {
     return (value | (uint64(1) << pos)), nil
 }
 
+// ToggleBit32 set the specified bit to 1 for 32-bit value and return the new value
+func ToggleBit32(value uint32, pos uint) (uint32, error) {
+    if pos >= 32 {
+        return value, fmt.Errorf("invalid position(%v)", pos)
+    }
 
+    return (value ^ (uint32(1) << pos)), nil
+}
+
+// ToggleBit64 set the specified bit to 1 for 64-bit value and return the new value
+func ToggleBit64(value uint64, pos uint) (uint64, error) {
+    if pos >= 64 {
+        return value, fmt.Errorf("invalid position(%v)", pos)
+    }
+    return (value ^ (uint64(1) << pos)), nil
+}
