@@ -709,3 +709,57 @@ func TestCountLeadOne64(t *testing.T) {
         value <<= 8
     }
 }
+
+func TestSetBit32(t *testing.T) {
+    var value, ret uint32
+    var pos uint
+    var err error
+
+    value = 0x0
+
+    pos = 32 
+    ret, err = SetBit32(value, pos)
+    if err == nil {
+        t.Logf("expect error")
+    }
+
+    pos = 0
+    ret, err = SetBit32(value, pos)
+    if err != nil || ret != 0x1{
+        t.Logf("LSB error")
+    }
+
+    pos = 31
+    ret, err = SetBit32(value, pos)
+    if err != nil || ret != 0x80000000{
+        t.Logf("MSB error")
+    }
+
+}
+
+func TestSetBit64(t *testing.T) {
+    var value, ret uint64
+    var pos uint
+    var err error
+
+    value = 0x0
+
+    pos = 64 
+    ret, err = SetBit64(value, pos)
+    if err == nil {
+        t.Logf("expect error")
+    }
+
+    pos = 0
+    ret, err = SetBit64(value, pos)
+    if err != nil || ret != 0x1{
+        t.Logf("LSB error")
+    }
+
+    pos = 63
+    ret, err = SetBit64(value, pos)
+    if err != nil || ret != uint64(1) << 63{
+        t.Logf("MSB error")
+    }
+
+}
