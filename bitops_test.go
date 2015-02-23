@@ -636,7 +636,6 @@ func TestCountTrailOne64(t *testing.T) {
     value = 0x0FFFFFFFFFFFFFFF
     for i = 8; i > 0; i-- {
         count = CountTrailOne64(value)
-        t.Logf("expect %d for %x but get %x", expect_cnt, count, value)
         if expect_cnt = i * 8 - 4; count != expect_cnt {
             t.Fail()
             t.Logf("expect %d for %d but get %x", expect_cnt, count, value)
@@ -721,18 +720,21 @@ func TestSetBit32(t *testing.T) {
     ret, err = SetBit32(value, pos)
     if err == nil {
         t.Logf("expect error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = SetBit32(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 31
     ret, err = SetBit32(value, pos)
     if err != nil || ret != 0x80000000{
         t.Logf("MSB error")
+        t.Fail()
     }
 
 }
@@ -748,18 +750,21 @@ func TestSetBit64(t *testing.T) {
     ret, err = SetBit64(value, pos)
     if err == nil {
         t.Logf("expect error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = SetBit64(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 63
     ret, err = SetBit64(value, pos)
     if err != nil || ret != uint64(1) << 63{
         t.Logf("MSB error")
+        t.Fail()
     }
 
 }
@@ -775,18 +780,21 @@ func TestToggleBit32(t *testing.T) {
     ret, err = ToggleBit32(value, pos)
     if err == nil {
         t.Logf("expect error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = ToggleBit32(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 31
     ret, err = ToggleBit32(value, pos)
     if err != nil || ret != 0x80000000{
         t.Logf("MSB error")
+        t.Fail()
     }
 
     value = 0x80000001
@@ -794,12 +802,14 @@ func TestToggleBit32(t *testing.T) {
     ret, err = ToggleBit32(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = ToggleBit32(value, pos)
     if err != nil || ret != 0x80000000{
         t.Logf("MSB error")
+        t.Fail()
     }
 
 }
@@ -815,18 +825,21 @@ func TestToggleBit64(t *testing.T) {
     ret, err = ToggleBit64(value, pos)
     if err == nil {
         t.Logf("expect error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = ToggleBit64(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 63
     ret, err = ToggleBit64(value, pos)
     if err != nil || ret != uint64(1) << 63{
         t.Logf("MSB error")
+        t.Fail()
     }
 
     value = 0x8000000000000001
@@ -834,12 +847,14 @@ func TestToggleBit64(t *testing.T) {
     ret, err = ToggleBit64(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = ToggleBit64(value, pos)
     if err != nil || ret != uint64(1) << 63{
         t.Logf("MSB error")
+        t.Fail()
     }
 }
 
@@ -854,18 +869,21 @@ func TestClearBit32(t *testing.T) {
     ret, err = ClearBit32(value, pos)
     if err == nil {
         t.Logf("expect error")
+        t.Fail()
     }
 
     pos = 31
     ret, err = ClearBit32(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = ClearBit32(value, pos)
     if err != nil || ret != 0x80000000{
         t.Logf("MSB error")
+        t.Fail()
     }
 
 }
