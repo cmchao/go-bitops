@@ -2,7 +2,9 @@
 The package implement a set of common bit operations which are widely used in conventional C/C++. The some function of this library should be a little slower than native C implementation. It is because C language prefer to use assert to check invalid parameter (ex : clear 100th bit for a 32bit variable) but this implementation check all possible error and return them.
 
 # Feature List
+
 | Function Prefix  | uint64 | uint32 | uint16 | uint8 | return error |
+| -----------------|--------|--------|--------|-------|--------------|
 | ClearBit         |   x    |   x    |        |       |       x      |
 | ToggleBit        |   x    |   x    |        |       |       x      |
 | SetBit           |   x    |   x    |        |       |       x      |
