@@ -344,3 +344,22 @@ func TestBit64(value uint64, pos uint) (bool, error) {
     }
     return (value & (uint64(1) << pos)) != 0, nil
 }
+
+// Reverse32 set reverse the bit order for 32-bit variable
+func Reverse32(value uint32) (uint32) {
+    value = ((value >> 1) & 0x55555555) | ((value & 0x55555555) << 1)
+    value = ((value >> 2) & 0x33333333) | ((value & 0x33333333) << 2)
+    value = ((value >> 4) & 0x0F0F0F0F) | ((value & 0x0F0F0F0F) << 4)
+    value = ((value >> 8) & 0x00FF00FF) | ((value & 0x00FF00FF) << 8)
+    value = ( value >> 16             ) | ( value               << 16)
+
+    return value
+}
+
+// Reverse64 set reverse the bit order for 64-bit variable
+func Reverse64(value uint64) (uint64) {
+    high :=  Reverse32(uint32(value))
+    low :=  Reverse32(uint32(value >> 32))
+
+    return (uint64(high) << 32) | uint64(low)
+}

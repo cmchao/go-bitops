@@ -993,3 +993,36 @@ func TestTestBit64(t *testing.T) {
     }
 
 }
+
+func TestReverse32(t *testing.T) {
+    var value, ret, expect uint32
+
+    value = 0x01234567
+    expect = 0xE6A2C480
+
+    ret = Reverse32(value)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x89ABCDEF
+    expect = 0xF7B3D591
+    ret = Reverse32(value)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+}
+func TestReverse64(t *testing.T) {
+    var value, ret, expect uint64
+
+    value = 0x0123456789ABCDEF
+    expect = 0xF7B3D591E6A2C480
+
+    ret = Reverse64(value)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+}
