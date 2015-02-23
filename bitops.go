@@ -327,3 +327,20 @@ func ClearBit64(value uint64, pos uint) (uint64, error) {
     }
     return (value &^ (uint64(1) << pos)), nil
 }
+
+// TestBit32 set the specified bit to 1 for 32-bit value and return the new value
+func TestBit32(value uint32, pos uint) (bool, error) {
+    if pos >= 32 {
+        return false, fmt.Errorf("invalid position(%v)", pos)
+    }
+
+    return (value & (uint32(1) << pos)) != 0, nil
+}
+
+// TestBit64 set the specified bit to 1 for 64-bit value and return the new value
+func TestBit64(value uint64, pos uint) (bool, error) {
+    if pos >= 64 {
+        return false, fmt.Errorf("invalid position(%v)", pos)
+    }
+    return (value & (uint64(1) << pos)) != 0, nil
+}

@@ -881,18 +881,97 @@ func TestClearBit64(t *testing.T) {
     ret, err = ClearBit64(value, pos)
     if err == nil {
         t.Logf("expect error")
+        t.Fail()
     }
 
     pos = 63
     ret, err = ClearBit64(value, pos)
     if err != nil || ret != 0x1{
         t.Logf("LSB error")
+        t.Fail()
     }
 
     pos = 0
     ret, err = ClearBit64(value, pos)
     if err != nil || ret != uint64(1) << 63{
         t.Logf("MSB error")
+        t.Fail()
+    }
+
+}
+
+func TestTestBit32(t *testing.T) {
+    var value uint32
+    var ret bool
+    var pos uint
+    var err error
+
+    value = 0x80000001
+
+    pos = 32
+    ret, err = TestBit32(value, pos)
+    if err == nil {
+        t.Logf("expect error")
+        t.Fail()
+    }
+
+    pos = 31
+    ret, err = TestBit32(value, pos)
+    if err != nil || !ret {
+        t.Logf("LSB error")
+        t.Fail()
+    }
+
+    pos = 0
+    ret, err = TestBit32(value, pos)
+    if err != nil || !ret {
+        t.Logf("MSB error")
+        t.Fail()
+    }
+
+    pos = 16
+    ret, err = TestBit32(value, pos)
+    if err != nil || ret {
+        t.Logf("16th bit error")
+        t.Fail()
+    }
+
+}
+
+func TestTestBit64(t *testing.T) {
+    var value uint64
+    var ret bool
+    var pos uint
+    var err error
+
+    value = 0x8000000000000001
+
+    pos = 64
+    ret, err = TestBit64(value, pos)
+    if err == nil {
+        t.Logf("expect error")
+        t.Fail()
+    }
+
+    pos = 63
+    ret, err = TestBit64(value, pos)
+    if err != nil || !ret {
+        t.Logf("LSB error")
+        t.Fail()
+    }
+
+    pos = 0
+    ret, err = TestBit64(value, pos)
+    if err != nil || !ret{
+        t.Logf("MSB error")
+        t.Fail()
+    }
+
+    pos = 32
+    ret, err = TestBit64(value, pos)
+    if err != nil || ret {
+        t.Logf("32nd bit error")
+        t.Fail()
     }
 
 }
