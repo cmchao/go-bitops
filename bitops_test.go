@@ -1026,3 +1026,143 @@ func TestReverse64(t *testing.T) {
         t.Logf("%x expect %x but get %x", value, expect, ret)
     }
 }
+
+func TestRotateRight32(t *testing.T) {
+    var value, ret, expect uint32
+    var shift uint
+
+    value = 0x01234567
+    expect = 0x45670123
+    shift = 16
+
+    ret = RotateRight32(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x01234567
+    expect = 0x45670123
+    shift = 48
+
+    ret = RotateRight32(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x01234567
+    expect = 0x70123456
+    shift = 4
+
+    ret = RotateRight32(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+}
+
+func TestRotateLeft32(t *testing.T) {
+    var value, ret, expect uint32
+    var shift uint
+
+    value = 0x01234567
+    expect = 0x45670123
+    shift = 16
+
+    ret = RotateLeft32(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x01234567
+    expect = 0x45670123
+    shift = 48
+
+    ret = RotateLeft32(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x01234567
+    expect = 0x12345670
+    shift = 4
+
+    ret = RotateLeft32(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+}
+
+func TestRotateRight64(t *testing.T) {
+    var value, ret, expect uint64
+    var shift uint
+
+    value = 0x0123456789ABCDEF
+    expect = 0x89ABCDEF01234567
+    shift = 32
+
+    ret = RotateRight64(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x0123456789ABCDEF
+    expect = 0x89ABCDEF01234567
+    shift = 96
+
+    ret = RotateRight64(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x0123456789ABCDEF
+    expect = 0xF0123456789ABCDE
+    shift = 4
+
+    ret = RotateRight64(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+}
+
+func TestRotateLeft64(t *testing.T) {
+    var value, ret, expect uint64
+    var shift uint
+
+    value = 0x0123456789ABCDEF
+    expect = 0x89ABCDEF01234567
+    shift = 32
+
+    ret = RotateLeft64(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x0123456789ABCDEF
+    expect = 0x89ABCDEF01234567
+    shift = 96
+
+    ret = RotateLeft64(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+
+    value = 0x0123456789ABCDEF
+    expect = 0x123456789ABCDEF0
+    shift = 4
+
+    ret = RotateLeft64(value, shift)
+    if ret != expect {
+        t.Fail()
+        t.Logf("%x expect %x but get %x", value, expect, ret)
+    }
+}

@@ -363,3 +363,31 @@ func Reverse64(value uint64) (uint64) {
 
     return (uint64(high) << 32) | uint64(low)
 }
+
+// RotateRight32 rotate an 32-bit value right
+func RotateRight32(value uint32, shift uint) (uint32) {
+    shift = shift & 0x1F
+
+    return (value >> shift) | (value << (32 - shift))
+}
+
+// RotateLeft32 rotate an 32-bit value left
+func RotateLeft32(value uint32, shift uint) (uint32){
+    shift = shift & 0x1F
+
+    return (value << shift) | (value >> (32 - shift))
+}
+
+// RotateRight64 rotate an 64-bit value right
+func RotateRight64(value uint64, shift uint) (uint64){
+    shift = shift & 0x3F
+
+    return (value >> shift) | (value << (64 - shift))
+}
+
+// RotateLeft64 rotate an 64-bit value left
+func RotateLeft64(value uint64, shift uint) (uint64){
+    shift = shift & 0x3F
+
+    return (value << shift) | (value >> (64 - shift))
+}
