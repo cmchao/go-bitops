@@ -1014,6 +1014,7 @@ func TestReverse32(t *testing.T) {
         t.Logf("%x expect %x but get %x", value, expect, ret)
     }
 }
+
 func TestReverse64(t *testing.T) {
     var value, ret, expect uint64
 
